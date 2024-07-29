@@ -29,9 +29,9 @@ public:
 
 int main (){
     string s = "()[]{}";
-    Solution solucion;
+    Solution sol;
 
-    cout << solucion.isValid(s);
+    cout << sol.isValid(s);
 
     return 0;
 }
