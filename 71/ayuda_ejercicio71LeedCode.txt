@@ -1,0 +1,47 @@
+
+tokens : CD, UD ND
+
+string path = "/home/user/Documents/../Pictures";
+stack<strings> s = [Pictures][DELETE][Documents][user][home]
+	
+	/top
+	[home]
+	[user]
+	[Documents]
+	[UD]
+	[UD]
+	[Pictures]
+
+string result = "/home/Pictures"
+
+
+> Si hay un .
+	> Si hay un / despues del primer punto
+		-> CD
+	> Si hay un . despues del primer punto
+		> Si hay un tercer . despues del segundo punto
+			-> ND
+		> Si hay un / despues dle segundo punto
+			-> UD
+	> Si hay una letra|numero despues del primer punto
+		-> ND
+
+
+
+* size_t udCounter = 0
+
+> Si hay un CD
+	-> stk.pop() y no agregar
+> Si hay un ND
+	> Si udCounter == 0:
+		-> stk.pop() y agregar
+	> cualquier otro caso:
+		-> stk.pop() y no agregar
+		-> udCounter--
+> Si hay un UD
+	-> udCounter++
+
+
+
+
+
