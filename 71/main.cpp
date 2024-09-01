@@ -69,11 +69,28 @@ public:
         if (stk.empty()) // Si no entuentro elementos en el stack, muestro la ruta raiz.
             return "/";
 
-        while(!stk.empty()){
-            cout << "TOK[" << stk.top() << "]" << "\n"; // Identifica todos los Tokens en el Path
-            resultPath = "/" + stk.top() + resultPath;
-            stk.pop();
-        } /// TODO falta identificar cada Token en el Stack y realizar operaciones con ellos.
+        size_t udCounter = 0;
+        while(!stk.empty()){ // Lee los Tokens y opera con ellos
+            if (stk.top() == "CD"){ // CD -> Solo lo saca del stack
+                stk.pop();
+            } else if (stk.top() == "UD"){ // UD -> Aumenta el contador de UP y lo saca del stack
+                udCounter++;
+                stk.pop();
+            } else { // Asumimos que lo demas son Nombres de Directorios
+                switch(udCounter){
+                    case 0: // Si el contador de UP esta en 0, agregamos el token al path
+                        resultPath = "/" + stk.top() + resultPath;
+                        stk.pop();
+                        break;
+                    default: // Si el contador de UP esta en cualquier numero que no sea 0, eliminamos un directorio y disminuimos en uno el contador de UP
+                        stk.pop();
+                        udCounter--;
+                        break;
+                }
+            }
+            //resultPath = "/" + stk.top() + resultPath;
+            //stk.pop();
+        }
 
         return resultPath;
     }
@@ -90,19 +107,19 @@ int main(){
     //string path2 = "/home//foo/"; // /home/foo
     //string path3 = "/home/user/Documents/../Pictures"; // /home/user/Pictures
     //string path4 = "/../"; // /../
-    string path5 = "/.../a/../b/c/../d/./"; // /.../b/d
-    //string extraPath1 = "/a/./b/../../c/"; // /c ///TODO
-    //string extraPath2 = "/a//b////c/d//././/.."; // /a/b/c ///TODO
-    //string extraPath3 = "/"; // / ///TODO
+    //string path5 = "/.../a/../b/c/../d/./"; // /.../b/d
+    string extraPath1 = "/a/./b/../../c/"; // /c
+    string extraPath2 = "/a//b////c/d//././/.."; // /a/b/c
+    string extraPath3 = "/"; // /
 //
     //cout << sol.simplifyPath(path1) << "\n";
     //cout << sol.simplifyPath(path2) << "\n";
     //cout << sol.simplifyPath(path3) << "\n";
     //cout << sol.simplifyPath(path4) << "\n";
-    cout << sol.simplifyPath(path5) << "\n";
-    //cout << sol.simplifyPath(extraPath1) << "\n";
-    //cout << sol.simplifyPath(extraPath2) << "\n";
-    //cout << sol.simplifyPath(extraPath3) << "\n";
+    //cout << sol.simplifyPath(path5) << "\n";
+    cout << sol.simplifyPath(extraPath1) << "\n";
+    cout << sol.simplifyPath(extraPath2) << "\n";
+    cout << sol.simplifyPath(extraPath3) << "\n";
 
     return 0;
 }
