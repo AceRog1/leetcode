@@ -29,19 +29,30 @@ public:
     }
 
     void push(int val) { // push element
-
+        Node* newNode = new Node(val);
+        if (size == 0){
+            head = newNode;
+            min = val;
+            size++;
+        } else {
+            newNode->next = head;
+            head = newNode;
+            if (min > val)
+                min = val;
+            size++;
+        }
     }
 
     void pop() { // delete element
-
+        /// Falta ver porque no funciona esto
     }
 
     int top() { // gets the top element
-
+        return head->val;
     }
 
     int getMin() { // gets the min element
-
+        return min;
     }
 };
 
