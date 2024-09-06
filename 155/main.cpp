@@ -44,7 +44,7 @@ public:
     }
 
     void pop() { // delete element
-        /// Falta ver porque no funciona esto
+        
     }
 
     int top() { // gets the top element
