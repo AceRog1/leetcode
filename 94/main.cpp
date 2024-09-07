@@ -17,17 +17,17 @@ using namespace std;
  */
 
 struct TreeNode {
-    int val; // value
-    TreeNode *left; // left node
-    TreeNode *right; // right node
-    TreeNode() : val(0), left(nullptr), right(nullptr) {} // default constructor
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {} // constructor with parameter x
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {} // constructor with parameters x *left *right
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) { // Aqui se hace un InOrder
+    vector<int> inorderTraversal(TreeNode* root) {
         vector<int> inorder;
         if (root == nullptr)
             return inorder;
@@ -39,11 +39,11 @@ public:
         return inorder;
     }
 
-    void inOrder(vector<int> &inorder, TreeNode* node){ // Funcion recursiva
+    void inOrder(vector<int> &inorder, TreeNode* node){
         if (node == nullptr)
             return;
         inOrder(inorder, node->left);
-        inorder.push_back(node->val); // sacar el elemento en medio lo volvera InOrder
+        inorder.push_back(node->val);
         inOrder(inorder, node->right);
     }
 };
