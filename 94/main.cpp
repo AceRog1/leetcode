@@ -1,3 +1,7 @@
+//
+// Created by acerog on 7/09/24.
+//
+
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -5,15 +9,8 @@
 using namespace std;
 
 /**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
+ * Beats 100.00% in Runtime (0ms)
+ * Beats 25.49% in Memory (10.15mb)
  */
 
 struct TreeNode {
