@@ -27,14 +27,24 @@ struct TreeNode {
 
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) { // Aqui se hace un DFS
+    vector<int> inorderTraversal(TreeNode* root) { // Aqui se hace un InOrder
+        vector<int> inorder;
+        inOrder(inorder, root);
+        return inorder;
+    }
 
+    void inOrder(vector<int> &inorder, TreeNode* node){ // Funcion recursiva
+        if (node == nullptr)
+            return;
+        inOrder(inorder, node->left);
+        inorder.push_back(node->val); // sacar el elemento en medio lo volvera InOrder
+        inOrder(inorder, node->right);
     }
 };
 
 int main() {
 
-    Solution sol1, sol2;
+    Solution sol;
 
     // Arbol 1
     auto *tree11 = new TreeNode(1);
@@ -44,16 +54,15 @@ int main() {
     tree11->right = tree12;
     tree12->left = tree13;
 
-    vector<int> inorderTree1 = sol1.inorderTraversal(tree11);
+    vector<int> inorderTree1 = sol.inorderTraversal(tree11);
 
-    for (int i : inorderTree1){
-        if (i == 0)
-            cout << "[" << i << " ";
-        if (i == inorderTree1.size()-1)
-            cout << i << "]";
+    for (int i : inorderTree1)
         cout << i << " ";
-    }
     cout << endl;
+
+    delete tree11;
+    delete tree12;
+    delete tree13;
 
     // Arbol 2
     auto *tree21 = new TreeNode(1);
@@ -75,17 +84,20 @@ int main() {
     tree23->right = tree28;
     tree28->left = tree29;
 
-    vector<int> inorderTree2 = sol1.inorderTraversal(tree12);
+    vector<int> inorderTree2 = sol.inorderTraversal(tree21);
 
-    for (int i : inorderTree2){
-        if (i == 0)
-            cout << "[" << i << " ";
-        if (i == inorderTree2.size()-1)
-            cout << i << "]";
+    for (int i : inorderTree2)
         cout << i << " ";
-    }
 
-
+    delete tree21;
+    delete tree22;
+    delete tree23;
+    delete tree24;
+    delete tree25;
+    delete tree26;
+    delete tree27;
+    delete tree28;
+    delete tree29;
 
     return 0;
 }
