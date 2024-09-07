@@ -29,6 +29,12 @@ class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) { // Aqui se hace un InOrder
         vector<int> inorder;
+        if (root == nullptr)
+            return inorder;
+        if (root->right == nullptr && root->left == nullptr){
+            inorder.push_back(root->val);
+            return inorder;
+        }
         inOrder(inorder, root);
         return inorder;
     }
@@ -88,6 +94,7 @@ int main() {
 
     for (int i : inorderTree2)
         cout << i << " ";
+    cout << endl;
 
     delete tree21;
     delete tree22;
@@ -98,6 +105,29 @@ int main() {
     delete tree27;
     delete tree28;
     delete tree29;
+
+    // Arbol 3
+
+    TreeNode *tree31;
+
+    vector<int> inorderTree3 = sol.inorderTraversal(tree31);
+
+    for (int i : inorderTree3)
+        cout << i << " ";
+    cout << endl;
+
+    delete tree31;
+
+    // Arbol 4
+
+    auto *tree41 = new TreeNode(1);
+
+    vector<int> inorderTree4 = sol.inorderTraversal(tree41);
+
+    for (int i : inorderTree4)
+        cout << i << " ";
+
+    delete tree41;
 
     return 0;
 }
