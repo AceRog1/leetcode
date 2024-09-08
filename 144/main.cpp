@@ -27,7 +27,23 @@ struct TreeNode {
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> preorder;
+        if (root == nullptr)
+            return preorder;
+        if(root->left == nullptr && root->right == nullptr){
+            preorder.push_back(root->val);
+            return preorder;
+        }
+        preOrder(preorder, root);
+        return preorder;
+    }
 
+    void preOrder(vector<int>& preorder, TreeNode* node){
+        if (node == nullptr)
+            return;
+        preorder.push_back(node->val);
+        preOrder(preorder, node->left);
+        preOrder(preorder, node->right);
     }
 };
 
