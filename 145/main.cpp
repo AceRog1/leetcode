@@ -28,6 +28,12 @@ class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
         vector<int> postorder;
+        if (root == nullptr)
+            return postorder;
+        if (root->left == nullptr && root->right == nullptr){
+            postorder.push_back(root->val);
+            return postorder;
+        }
         postOrder(postorder, root);
         return postorder;
     }
