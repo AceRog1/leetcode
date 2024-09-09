@@ -27,7 +27,17 @@ struct TreeNode {
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
-        
+        vector<int> postorder;
+
+        return postorder;
+    }
+
+    void postOrder(vector<int>& postorder, TreeNode* node){
+        if (node == nullptr)
+            return;
+        postOrder(postorder, node->left);
+        postOrder(postorder, node->right);
+        postorder.push_back(node->val);
     }
 };
 
