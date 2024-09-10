@@ -7,7 +7,7 @@
 using namespace std;
 
 /**
- * 
+ *
  */
 
 struct ListNode {
