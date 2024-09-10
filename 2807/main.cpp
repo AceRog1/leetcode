@@ -24,8 +24,28 @@ struct ListNode {
 class Solution {
 public:
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
-        ListNode* node = head;
-        return node;
+        ListNode* tempI = head;
+        ListNode* tempF = head->next;
+
+        while (tempF != nullptr){
+            auto newNode = new ListNode(gcd(tempI->val, tempF->val));
+            newNode->next = tempF;
+            tempI->next = newNode;
+            tempI = tempF;
+            tempF = tempF->next;
+        }
+
+        return head;
+    }
+
+    int static gcd(int a, int b){
+        int result = min(a,b);
+        while (result > 0){
+            if (a%result == 0 && b%result == 0)
+                break;
+            result--;
+        }
+        return result;
     }
 };
 
@@ -47,7 +67,10 @@ int main() {
 
     ListNode* temp1 = head1;
     while(temp1 != nullptr){
-        cout << temp1->val << " -> ";
+        if (temp1->next == nullptr)
+            cout << temp1->val;
+        else
+            cout << temp1->val << " -> ";
         temp1 = temp1->next;
     }
     cout << endl;
@@ -66,7 +89,10 @@ int main() {
 
     ListNode* temp2 = head2;
     while(temp2 != nullptr){
-        cout << temp2->val << " -> ";
+        if (temp2->next == nullptr)
+            cout << temp2->val;
+        else
+            cout << temp2->val << " -> ";
         temp2 = temp2->next;
     }
     cout << endl;
