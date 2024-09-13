@@ -54,8 +54,8 @@ public:
             toHead = 0;
         }
         Node* newSearch = new Node(std::move(url));
-        newSearch->next = head;
-        head->prev = newSearch;
+        newSearch->prev = head;
+        head->next = newSearch;
         head = newSearch;
         current = newSearch;
         size++;
@@ -88,16 +88,16 @@ public:
         return current->url;
     }
 
-    ~BrowserHistory(){
-        current = head;
-        head = nullptr;
-        tail = nullptr;
-        while (current != nullptr){
-            Node* popNode = current;
-            current = current->next;
-            popNode->kill();
-        }
-    }
+//    ~BrowserHistory(){
+//        current = head;
+//        head = nullptr;
+//        tail = nullptr;
+//        while (current != nullptr){
+//            Node* popNode = current;
+//            current = current->prev;
+//            popNode->kill();
+//        }
+//    }
 };
 
 /**
@@ -115,13 +115,13 @@ int main() {
     history->visit("google.com");
     history->visit("facebook.com");
     history->visit("youtube.com");
-    history->back(1);
-    history->back(1);
-    history->forward(1);
+    cout << history->back(1) << " ";
+    cout << history->back(1) << " ";
+    cout << history->forward(1) << " ";
     history->visit("linkedin.com");
-    history->forward(2);
-    history->back(2);
-    history->back(7);
+    cout << history->forward(2) << " ";
+    cout << history->back(2) << " ";
+    cout << history->back(7) << " ";
 
     delete history;
 
