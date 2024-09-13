@@ -1,24 +1,91 @@
 #include <iostream>
 #include <string>
+#include <utility>
 
 using namespace std;
 
 class BrowserHistory {
+private:
+    struct Node{
+        string url;
+        Node* next;
+        Node* prev;
+        Node(){
+            next = nullptr;
+            prev = nullptr;
+        }
+        explicit Node(string newUrl){
+            url = std::move(newUrl);
+            next = nullptr;
+            prev = nullptr;
+        }
+        void kill(){
+            next = nullptr;
+            prev = nullptr;
+            delete this;
+        }
+    };
+private:
+    Node* head;
+    Node* tail;
+    Node* current;
+    int toTail, toHead;
+    size_t size;
 public:
     BrowserHistory(string homepage) {
-
+        Node* newSearch = new Node(homepage);
+        head = newSearch;
+        tail = newSearch;
+        current = newSearch;
+        size = 1;
+        toHead = 0;
+        toTail = 0;
     }
 
     void visit(string url) {
-
+        if (current->next != nullptr){
+            Node* temp = current;
+            while (temp != nullptr){
+                Node* popNode = temp;
+                temp = temp->next;
+                popNode->kill();
+            }
+            head = current;
+            toHead = 0;
+        }
+        Node* newSearch = new Node(std::move(url));
+        newSearch->next = head;
+        head->prev = newSearch;
+        head = newSearch;
+        current = newSearch;
+        size++;
+        toTail++;
     }
 
     string back(int steps) {
-
+        if (toTail < steps){
+            current = tail;
+        } else {
+            for (int i = 0; i < steps; i++){
+                current = current->prev;
+                toHead++;
+                toTail--;
+            }
+        }
+        return current->url;
     }
 
     string forward(int steps) {
-
+        if (toHead < steps){
+            current = head;
+        } else {
+            for (int i = 0; i < steps; i++){
+                current = current->next;
+                toHead--;
+                toTail++;
+            }
+        }
+        return current->url;
     }
 };
 
@@ -31,6 +98,10 @@ public:
  */
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    auto history = new BrowserHistory("leetcode.com");
+
+
+
     return 0;
 }
