@@ -48,10 +48,13 @@ public:
             while (temp != nullptr){
                 Node* popNode = temp;
                 temp = temp->next;
+                size--;
+                toTail--;
                 popNode->kill();
             }
             head = current;
             toHead = 0;
+            head->next = nullptr;
         }
         Node* newSearch = new Node(std::move(url));
         newSearch->prev = head;
@@ -110,23 +113,23 @@ public:
 
 int main() {
 
-    auto history1 = new BrowserHistory("leetcode.com");
-
-    history1->visit("google.com");
-    history1->visit("facebook.com");
-    history1->visit("youtube.com");
-    cout << history1->back(1) << " ";
-    cout << history1->back(1) << " ";
-    cout << history1->forward(1) << " ";
-    history1->visit("linkedin.com");
-    cout << history1->forward(2) << " ";
-    cout << history1->back(2) << " ";
-    cout << history1->back(7) << " ";
-
-    delete history1;
-
-    cout << endl;
-    cout << endl;
+//    auto history1 = new BrowserHistory("leetcode.com");
+//
+//    history1->visit("google.com");
+//    history1->visit("facebook.com");
+//    history1->visit("youtube.com");
+//    cout << history1->back(1) << " ";
+//    cout << history1->back(1) << " ";
+//    cout << history1->forward(1) << " ";
+//    history1->visit("linkedin.com");
+//    cout << history1->forward(2) << " ";
+//    cout << history1->back(2) << " ";
+//    cout << history1->back(7) << " ";
+//
+//    delete history1;
+//
+//    cout << endl;
+//    cout << endl;
 
     auto history2 = new BrowserHistory("rlglu.com");
 
