@@ -110,22 +110,46 @@ public:
 
 int main() {
 
-    auto history = new BrowserHistory("leetcode.com");
+    auto history1 = new BrowserHistory("leetcode.com");
 
-    history->visit("google.com");
-    history->visit("facebook.com");
-    history->visit("youtube.com");
-    cout << history->back(1) << " ";
-    cout << history->back(1) << " ";
-    cout << history->forward(1) << " ";
-    history->visit("linkedin.com");
-    cout << history->forward(2) << " ";
-    cout << history->back(2) << " ";
-    cout << history->back(7) << " ";
+    history1->visit("google.com");
+    history1->visit("facebook.com");
+    history1->visit("youtube.com");
+    cout << history1->back(1) << " ";
+    cout << history1->back(1) << " ";
+    cout << history1->forward(1) << " ";
+    history1->visit("linkedin.com");
+    cout << history1->forward(2) << " ";
+    cout << history1->back(2) << " ";
+    cout << history1->back(7) << " ";
 
-    delete history;
+    delete history1;
 
+    cout << endl;
+    cout << endl;
 
+    auto history2 = new BrowserHistory("rlglu.com");
+
+    cout << history2->back(2) << " ";
+    history2->visit("zxowmd.com");
+    cout << history2->back(4) << " ";
+    history2->visit("gbnssie.com");
+    history2->visit("bqo.com");
+    cout << history2->back(6) << " ";
+    history2->visit("cq.com");
+    history2->visit("pbh.com");
+    cout << history2->back(5) << " ";
+    history2->visit("ijt.com");
+    history2->visit("tnsiso.com");
+    cout << history2->back(7) << " ";
+    history2->visit("xjxi.com");
+    cout << history2->forward(3) << " ";
+    cout << history2->forward(9) << " ";
+    history2->visit("zlnx.com");
+    cout << history2->forward(3) << " ";
+    cout << history2->forward(7) << " ";
+
+    delete history2;
 
     return 0;
 }
