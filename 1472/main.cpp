@@ -33,7 +33,7 @@ private:
     size_t size;
 public:
     BrowserHistory(string homepage) {
-        Node* newSearch = new Node(homepage);
+        Node* newSearch = new Node(std::move(homepage));
         head = newSearch;
         tail = newSearch;
         current = newSearch;
@@ -44,7 +44,7 @@ public:
 
     void visit(string url) {
         if (current->next != nullptr){
-            Node* temp = current;
+            Node* temp = current->next;
             while (temp != nullptr){
                 Node* popNode = temp;
                 temp = temp->next;
@@ -87,6 +87,17 @@ public:
         }
         return current->url;
     }
+
+    ~BrowserHistory(){
+        current = head;
+        head = nullptr;
+        tail = nullptr;
+        while (current != nullptr){
+            Node* popNode = current;
+            current = current->next;
+            popNode->kill();
+        }
+    }
 };
 
 /**
@@ -100,6 +111,19 @@ public:
 int main() {
 
     auto history = new BrowserHistory("leetcode.com");
+
+    history->visit("google.com");
+    history->visit("facebook.com");
+    history->visit("youtube.com");
+    history->back(1);
+    history->back(1);
+    history->forward(1);
+    history->visit("linkedin.com");
+    history->forward(2);
+    history->back(2);
+    history->back(7);
+
+    delete history;
 
 
 
