@@ -4,6 +4,11 @@
 
 using namespace std;
 
+/**
+ * Beats 80.49% in Runtime (108ms)
+ * Beats 72.44% in Memory (62.02mb)
+ */
+
 class BrowserHistory {
 private:
     struct Node{
@@ -49,7 +54,6 @@ public:
                 Node* popNode = temp;
                 temp = temp->next;
                 size--;
-                //toTail--;
                 popNode->kill();
             }
             head = current;
@@ -95,14 +99,6 @@ public:
         return current->url;
     }
 };
-
-/**
- * Your BrowserHistory object will be instantiated and called as such:
- * BrowserHistory* obj = new BrowserHistory(homepage);
- * obj->visit(url);
- * string param_2 = obj->back(steps);
- * string param_3 = obj->forward(steps);
- */
 
 int main() {
 
