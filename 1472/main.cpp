@@ -131,28 +131,58 @@ int main() {
 //    cout << endl;
 //    cout << endl;
 
-    auto history2 = new BrowserHistory("rlglu.com");
+//    auto history2 = new BrowserHistory("rlglu.com");
+//
+//    cout << history2->back(2) << " ";
+//    history2->visit("zxowmd.com");
+//    cout << history2->back(4) << " ";
+//    history2->visit("gbnssie.com");
+//    history2->visit("bqo.com");
+//    cout << history2->back(6) << " ";
+//    history2->visit("cq.com");
+//    history2->visit("pbh.com");
+//    cout << history2->back(5) << " ";
+//    history2->visit("ijt.com");
+//    history2->visit("tnsiso.com");
+//    cout << history2->back(7) << " ";
+//    history2->visit("xjxi.com");
+//    cout << history2->forward(3) << " ";
+//    cout << history2->forward(9) << " ";
+//    history2->visit("zlnx.com");
+//    cout << history2->forward(3) << " ";
+//    cout << history2->forward(7) << " ";
+//
+//    delete history2;
+//
+//    cout << endl;
+//    cout << endl;
 
-    cout << history2->back(2) << " ";
-    history2->visit("zxowmd.com");
-    cout << history2->back(4) << " ";
-    history2->visit("gbnssie.com");
-    history2->visit("bqo.com");
-    cout << history2->back(6) << " ";
-    history2->visit("cq.com");
-    history2->visit("pbh.com");
-    cout << history2->back(5) << " ";
-    history2->visit("ijt.com");
-    history2->visit("tnsiso.com");
-    cout << history2->back(7) << " ";
-    history2->visit("xjxi.com");
-    cout << history2->forward(3) << " ";
-    cout << history2->forward(9) << " ";
-    history2->visit("zlnx.com");
-    cout << history2->forward(3) << " ";
-    cout << history2->forward(7) << " ";
+    auto history3 = new BrowserHistory("jrbilt.com");
 
-    delete history2;
+    history3->visit("uiza.com");
+    cout << history3->forward(3) << " ";
+    cout << history3->forward(3) << " ";
+    history3->visit("fveyl.com");
+    history3->visit("hyhqfqf.com");
+    cout << history3->back(3) << " ";
+    history3->visit("cccs.com");
+    history3->visit("bivz.com");
+    cout << history3->forward(6) << " ";
+    cout << history3->back(1) << " ";
+    history3->visit("cmbw.com");
+    history3->visit("iywwwfn.com");
+    history3->visit("sktbhdx.com");
+    cout << history3->forward(8) << " ";
+    cout << history3->forward(10) << " ";
+    history3->visit("bskj.com");
+    history3->visit("thw.com");
+    cout << history3->back(6) << " ";
+    history3->visit("hgesj.com");
+    cout << history3->forward(6) << " ";
+    history3->visit("ctb.com");
+    history3->visit("fllnc.com");
+    history3->visit("fs.com");
+    cout << history3->back(7) << " ";
 
     return 0;
 }
