@@ -49,7 +49,7 @@ public:
                 Node* popNode = temp;
                 temp = temp->next;
                 size--;
-                toTail--;
+                //toTail--;
                 popNode->kill();
             }
             head = current;
@@ -68,6 +68,8 @@ public:
     string back(int steps) {
         if (toTail < steps){
             current = tail;
+            toTail = 0;
+            toHead = size-1;
         } else {
             for (int i = 0; i < steps; i++){
                 current = current->prev;
@@ -81,6 +83,8 @@ public:
     string forward(int steps) {
         if (toHead < steps){
             current = head;
+            toHead = 0;
+            toTail = size-1;
         } else {
             for (int i = 0; i < steps; i++){
                 current = current->next;
@@ -90,17 +94,6 @@ public:
         }
         return current->url;
     }
-
-//    ~BrowserHistory(){
-//        current = head;
-//        head = nullptr;
-//        tail = nullptr;
-//        while (current != nullptr){
-//            Node* popNode = current;
-//            current = current->prev;
-//            popNode->kill();
-//        }
-//    }
 };
 
 /**
@@ -131,31 +124,31 @@ int main() {
 //    cout << endl;
 //    cout << endl;
 
-//    auto history2 = new BrowserHistory("rlglu.com");
-//
-//    cout << history2->back(2) << " ";
-//    history2->visit("zxowmd.com");
-//    cout << history2->back(4) << " ";
-//    history2->visit("gbnssie.com");
-//    history2->visit("bqo.com");
-//    cout << history2->back(6) << " ";
-//    history2->visit("cq.com");
-//    history2->visit("pbh.com");
-//    cout << history2->back(5) << " ";
-//    history2->visit("ijt.com");
-//    history2->visit("tnsiso.com");
-//    cout << history2->back(7) << " ";
-//    history2->visit("xjxi.com");
-//    cout << history2->forward(3) << " ";
-//    cout << history2->forward(9) << " ";
-//    history2->visit("zlnx.com");
-//    cout << history2->forward(3) << " ";
-//    cout << history2->forward(7) << " ";
-//
-//    delete history2;
-//
-//    cout << endl;
-//    cout << endl;
+    auto history2 = new BrowserHistory("rlglu.com");
+
+    cout << history2->back(2) << " ";
+    history2->visit("zxowmd.com");
+    cout << history2->back(4) << " ";
+    history2->visit("gbnssie.com");
+    history2->visit("bqo.com");
+    cout << history2->back(6) << " ";
+    history2->visit("cq.com");
+    history2->visit("pbh.com");
+    cout << history2->back(5) << " ";
+    history2->visit("ijt.com");
+    history2->visit("tnsiso.com");
+    cout << history2->back(7) << " ";
+    history2->visit("xjxi.com");
+    cout << history2->forward(3) << " ";
+    cout << history2->forward(9) << " ";
+    history2->visit("zlnx.com");
+    cout << history2->forward(3) << " ";
+    cout << history2->forward(7) << " ";
+
+    delete history2;
+
+    cout << endl;
+    cout << endl;
 
     auto history3 = new BrowserHistory("jrbilt.com");
 
