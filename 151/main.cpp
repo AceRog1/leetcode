@@ -32,6 +32,7 @@ public:
                 }
             }
         }
+        if (!token.empty()) tokens.push(token);
     }
 };
 
