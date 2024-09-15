@@ -5,6 +5,11 @@
 
 using namespace std;
 
+/**
+ * Beats 100.00% in Runtime (0ms)
+ * Beats 47.84% in Memory (10.28mb)
+ */
+
 class Solution {
 public:
     string reverseWords(string s) {
