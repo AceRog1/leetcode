@@ -28,14 +28,20 @@ public:
             } else {
                 if (!token.empty()){
                     tokens.push(token);
+                    token.clear();
                 }
-                token.clear();
             }
         }
     }
 };
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    Solution sol;
+
+    cout << sol.reverseWords("the sky is blue") << "\n";
+    cout << sol.reverseWords("  hello world  ") << "\n";
+    cout << sol.reverseWords("a good   example") << "\n";
+
     return 0;
 }
