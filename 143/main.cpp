@@ -5,14 +5,8 @@
 using namespace std;
 
 /**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
+ * Beats 92.25% in Runtime (21ms)
+ * Beats 27.44% in Memory (23.47mb)
  */
 
 struct ListNode {
@@ -75,12 +69,12 @@ int main() {
 
     Solution sol;
 
+    // test 1 y 2
     auto *head = new ListNode(1);
     auto *node2 = new ListNode(2);
     auto *node3 = new ListNode(3);
     auto *node4 = new ListNode(4);
     auto *node5 = new ListNode(5);
-    //ListNode *node6 = new ListNode(6);
 
     head->next = node2;
     node2->next = node3;
