@@ -36,44 +36,38 @@ public:
         ListNode *tempFront = head;
         ListNode *tempBack = head;
         size_t cont = 0;
-        stack<int> stk;
-        queue<int> qeu;
+        stack<ListNode*> stk;
+        queue<ListNode*> qeu;
         while (tempBack != nullptr){
             if (cont < half){
-                qeu.push(tempFront->val);
+                qeu.push(tempFront);
                 tempFront = tempFront->next;
                 tempBack = tempBack->next;
             } else {
-                stk.push(tempBack->val);
+                stk.push(tempBack);
                 tempBack = tempBack->next;
             }
             cont++;
         }
-        while (head != nullptr){
-            ListNode *temp = head;
-            head = head->next;
-            delete temp;
-        }
         ListNode *temp = head;
         while(!stk.empty() || !qeu.empty()){
             if (!qeu.empty()){
-                auto *newNode = new ListNode(qeu.front());
                 if (temp == nullptr && head == nullptr){
-                    head = newNode;
-                    temp = newNode;
+                    head = qeu.front();
+                    temp = qeu.front();
                 } else {
-                    temp->next = newNode;
-                    temp = newNode;
+                    temp->next = qeu.front();
+                    temp = qeu.front();
                 }
                 qeu.pop();
             }
             if (!stk.empty()){
-                auto *newNode = new ListNode(stk.top());
-                temp->next = newNode;
-                temp = newNode;
+                temp->next = stk.top();
+                temp = stk.top();
                 stk.pop();
             }
         }
+        temp->next = nullptr;
     }
 };
 
@@ -85,12 +79,13 @@ int main() {
     auto *node2 = new ListNode(2);
     auto *node3 = new ListNode(3);
     auto *node4 = new ListNode(4);
-    //ListNode *node5 = new ListNode(5);
+    auto *node5 = new ListNode(5);
     //ListNode *node6 = new ListNode(6);
 
     head->next = node2;
     node2->next = node3;
     node3->next = node4;
+    node4->next = node5;
 
     sol.reorderList(head);
 
@@ -104,6 +99,7 @@ int main() {
     delete node2;
     delete node3;
     delete node4;
+    delete node5;
 
     return 0;
 }
