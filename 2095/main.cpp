@@ -25,7 +25,28 @@ struct ListNode {
 class Solution {
 public:
     ListNode* deleteMiddle(ListNode* head) {
+        size_t size = 0;
+        ListNode *tempCount = head;
+        while (tempCount != nullptr){
+            size++;
+            tempCount = tempCount->next;
+        }
+        delete tempCount;
 
+        size_t midPoss = (size-1)/2;
+
+        ListNode *temp = head;
+        for (size_t i = 0; i < midPoss; i++){
+            if (i == midPoss-1){
+                ListNode *deleteNode = temp->next;
+                temp->next = deleteNode->next;
+                delete deleteNode;
+            }
+            temp = temp->next;
+        }
+        temp = nullptr;
+        delete temp;
+        return head;
     }
 };
 
@@ -50,13 +71,23 @@ int main() {
     node14->next = node15;
     node15->next = node16;
 
-    delete head10;
-    delete node11;
-    delete node12;
-    delete node13;
-    delete node14;
-    delete node15;
-    delete node16;
+    sol.deleteMiddle(head10);
+
+    ListNode *temp1 = head10;
+    while (temp1 != nullptr){
+        cout << temp1->val << " ";
+        temp1 = temp1->next;
+    }
+
+    //delete head10;
+    //delete node11;
+    //delete node12;
+    //delete node13;
+    //delete node14;
+    //delete node15;
+    //delete node16;
+
+    cout << endl;
 
     // Test 2
 
@@ -68,11 +99,21 @@ int main() {
     head20->next = node21;
     node21->next = node22;
     node22->next = node23;
-    
-    delete head20;
-    delete node21;
-    delete node22;
-    delete node23;
+
+    sol.deleteMiddle(head20);
+
+    ListNode *temp2 = head20;
+    while (temp2 != nullptr){
+        cout << temp2->val << " ";
+        temp2 = temp2->next;
+    }
+
+    //delete head20;
+    //delete node21;
+    //delete node22;
+    //delete node23;
+
+    cout << endl;
 
     // Test 3
 
@@ -81,8 +122,18 @@ int main() {
 
     head30->next = node31;
 
-    delete head30;
-    delete node31;
+    sol.deleteMiddle(head30);
+
+    ListNode *temp3 = head30;
+    while (temp3 != nullptr){
+        cout << temp3->val << " ";
+        temp3 = temp3->next;
+    }
+
+    //delete head30;
+    //delete node31;
+
+    cout << endl;
 
     return 0;
 }
