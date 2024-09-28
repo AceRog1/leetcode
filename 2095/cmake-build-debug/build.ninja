@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_2095: phony || .
 
 build CMakeFiles/2095.dir/main.cpp.o: CXX_COMPILER__2095_unscanned_Debug /Users/acerog/Documents/leetcode/2095/main.cpp || cmake_object_order_depends_target_2095
   DEP_FILE = CMakeFiles/2095.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -fcolor-diagnostics
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/2095.dir
   OBJECT_FILE_DIR = CMakeFiles/2095.dir
   TARGET_COMPILE_PDB = CMakeFiles/2095.dir/
@@ -66,7 +66,7 @@ build CMakeFiles/2095.dir/main.cpp.o: CXX_COMPILER__2095_unscanned_Debug /Users/
 # Link the executable 2095
 
 build 2095: CXX_EXECUTABLE_LINKER__2095_Debug CMakeFiles/2095.dir/main.cpp.o
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
   OBJECT_DIR = CMakeFiles/2095.dir
   POST_BUILD = :
   PRE_LINK = :

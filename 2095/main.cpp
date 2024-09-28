@@ -33,19 +33,35 @@ public:
         }
         delete tempCount;
 
-        size_t midPoss = (size-1)/2;
+        if (size == 1){
+            ListNode *popNode = head;
+            head = nullptr;
+            delete popNode;
+            return head;
+        }
+
+        size_t midPoss = (size-1)/2; // 6/2 = 3
 
         ListNode *temp = head;
-        for (size_t i = 0; i < midPoss; i++){
-            if (i == midPoss-1){
-                ListNode *deleteNode = temp->next;
-                temp->next = deleteNode->next;
-                delete deleteNode;
-            }
-            temp = temp->next;
+
+        if (size%2 == 0){
+            for (size_t i = 0; i < midPoss; i++)
+                temp = temp->next;
+            ListNode *deleteNode = temp->next;
+            temp->next = deleteNode->next;
+            delete deleteNode;
+            temp = nullptr;
+            delete temp;
+        } else if (size%2 != 0){
+            for (size_t i = 0; i < midPoss-1; i++)
+                temp = temp->next;
+            ListNode *deleteNode = temp->next;
+            temp->next = deleteNode->next;
+            delete deleteNode;
+            temp = nullptr;
+            delete temp;
         }
-        temp = nullptr;
-        delete temp;
+
         return head;
     }
 };
@@ -134,6 +150,17 @@ int main() {
     //delete node31;
 
     cout << endl;
+
+    // Test 4
+    auto *head40 = new ListNode(9);
+
+    sol.deleteMiddle(head40);
+
+    ListNode *temp4 = head40;
+    while (temp4 != nullptr){
+        cout << temp4->val << " ";
+        temp4 = temp4->next;
+    }
 
     return 0;
 }
