@@ -3,14 +3,7 @@
 using namespace std;
 
 /**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
+ * 
  */
 
 struct ListNode {
@@ -40,7 +33,7 @@ public:
             return head;
         }
 
-        size_t midPoss = (size-1)/2; // 6/2 = 3
+        size_t midPoss = (size-1)/2;
 
         ListNode *temp = head;
 
@@ -95,14 +88,6 @@ int main() {
         temp1 = temp1->next;
     }
 
-    //delete head10;
-    //delete node11;
-    //delete node12;
-    //delete node13;
-    //delete node14;
-    //delete node15;
-    //delete node16;
-
     cout << endl;
 
     // Test 2
@@ -124,11 +109,6 @@ int main() {
         temp2 = temp2->next;
     }
 
-    //delete head20;
-    //delete node21;
-    //delete node22;
-    //delete node23;
-
     cout << endl;
 
     // Test 3
@@ -146,21 +126,7 @@ int main() {
         temp3 = temp3->next;
     }
 
-    //delete head30;
-    //delete node31;
-
     cout << endl;
-
-    // Test 4
-    auto *head40 = new ListNode(9);
-
-    sol.deleteMiddle(head40);
-
-    ListNode *temp4 = head40;
-    while (temp4 != nullptr){
-        cout << temp4->val << " ";
-        temp4 = temp4->next;
-    }
 
     return 0;
 }
