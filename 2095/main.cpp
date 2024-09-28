@@ -1,9 +1,14 @@
+//
+// Created by acerog on 28/09/24.
+//
+
 #include <iostream>
 
 using namespace std;
 
 /**
- * 
+ * Beats 69.68% in Runtime (598ms)
+ * Beats 84.25% in Memory (299.65mb)
  */
 
 struct ListNode {
