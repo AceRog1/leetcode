@@ -25,7 +25,28 @@ struct ListNode {
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-
+        if (head == nullptr)
+            return head;
+        ListNode *temp;
+        auto sentinel = new ListNode(99);
+        sentinel->next = head;
+        temp = sentinel;
+        while (temp != nullptr){
+            if (temp->next != nullptr && temp->next->val == val){
+                ListNode* popNode = temp->next;
+                temp->next = popNode->next;
+                popNode->next = nullptr;
+                delete popNode;
+                if (temp == sentinel)
+                    head = temp->next;
+            } else {
+                temp = temp->next;
+            }
+        }
+        sentinel->next = nullptr;
+        sentinel = nullptr;
+        delete sentinel;
+        return head;
     }
 };
 
@@ -61,7 +82,7 @@ int main() {
 
 
     // Test 2
-    ListNode *head20;
+    ListNode *head20 = nullptr;
 
     sol.removeElements(head20, 1);
 
@@ -69,6 +90,7 @@ int main() {
         cout << "NULL";
     else
         cout << "Error";
+    cout << endl;
 
 
     // Test 3
