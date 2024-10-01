@@ -93,22 +93,22 @@ int main() {
     cout << endl;
 
 
-    // Test 3
-    auto *head30 = new ListNode(7);
-    auto *node31 = new ListNode(7);
-    auto *node32 = new ListNode(7);
-    auto *node33 = new ListNode(7);
-
-    head30->next = node31;
-    node31->next = node32;
-    node32->next = node33;
-
-    sol.removeElements(head30, 7);
-
-    if (head30 == nullptr)
-        cout << "NULL";
-    else
-        cout << "Error";
+    // Test 3 (Este test solo funciona en LeetCode)
+//    auto *head30 = new ListNode(7);
+//    auto *node31 = new ListNode(7);
+//    auto *node32 = new ListNode(7);
+//    auto *node33 = new ListNode(7);
+//
+//    head30->next = node31;
+//    node31->next = node32;
+//    node32->next = node33;
+//
+//    sol.removeElements(head30, 7);
+//
+//    if (head30 == nullptr)
+//        cout << "NULL";
+//    else
+//        cout << "Error";
 
 
     return 0;
