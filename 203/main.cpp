@@ -1,17 +1,15 @@
+//
+// Created by acerog on 30/09/24.
+//
+
 #include <iostream>
 #include <cassert>
 
 using namespace std;
 
 /**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
+ * Beats 75.14% in Runtime (14ms)
+ * Beats 28.70% in Memory (20.10mb)
  */
 
 struct ListNode {
