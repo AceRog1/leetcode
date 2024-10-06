@@ -1,28 +1,33 @@
 #include <iostream>
+#include <utility>
 
 using namespace std;
 
 class LRUCache {
 private:
-    pair<int, int> arr[0];
+    pair<int, int>** arr;
     int size;
-    size_t hash(int key) const{
+    [[nodiscard]] size_t hash(int key) const{
+        if (key == 0)
+            return 0;
         return size%key;
     }
 public:
     LRUCache(int capacity) {
         size = capacity;
-        arr[size];
+        arr = new pair<int, int>*[capacity];
+        for (int i = 0; i < size; i++)
+            arr[i] = nullptr;
     }
 
     int get(int key) {
         int pos = size%key;
-        return arr[pos].second;
+        return arr[pos]->second;
     }
 
     void put(int key, int value) {
         size_t add = hash(key);
-        pair<int, int> newVal(key, value);
+        auto  newVal = new pair<int, int>(key, value);
         arr[add] = newVal;
     }
 };
@@ -35,6 +40,10 @@ public:
  */
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    // Test 1
+
+
+
     return 0;
 }
