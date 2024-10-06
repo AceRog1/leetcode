@@ -3,17 +3,27 @@
 using namespace std;
 
 class LRUCache {
+private:
+    pair<int, int> arr[0];
+    int size;
+    size_t hash(int key) const{
+        return size%key;
+    }
 public:
     LRUCache(int capacity) {
-
+        size = capacity;
+        arr[size];
     }
 
     int get(int key) {
-
+        int pos = size%key;
+        return arr[pos].second;
     }
 
     void put(int key, int value) {
-
+        size_t add = hash(key);
+        pair<int, int> newVal(key, value);
+        arr[add] = newVal;
     }
 };
 
