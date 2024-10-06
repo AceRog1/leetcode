@@ -10,7 +10,7 @@ private:
     [[nodiscard]] size_t hash(int key) const{
         if (key == 0)
             return 0;
-        return size%key;
+        return key%size;
     }
 public:
     LRUCache(int capacity) {
@@ -21,7 +21,7 @@ public:
     }
 
     int get(int key) {
-        int pos = size%key;
+        int pos = key%size;
         return arr[pos]->second;
     }
 
@@ -29,6 +29,10 @@ public:
         size_t add = hash(key);
         auto  newVal = new pair<int, int>(key, value);
         arr[add] = newVal;
+    }
+
+    ~LRUCache(){
+        delete arr;
     }
 };
 
@@ -42,8 +46,17 @@ public:
 int main() {
 
     // Test 1
+    LRUCache lru(2);         // null
 
-
+    lru.put(1, 1);        // null
+    lru.put(2, 2);        // null
+    cout << lru.get(1) << "\n"; // 1
+    lru.put(3, 3);        // null
+    cout << lru.get(2) << "\n"; // -1
+    lru.put(4, 4);        // null
+    cout << lru.get(1) << "\n"; // -1
+    cout << lru.get(3) << "\n"; // 3
+    cout << lru.get(4) << "\n"; // 4
 
     return 0;
 }
