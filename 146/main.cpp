@@ -6,33 +6,43 @@ using namespace std;
 class LRUCache {
 private:
     pair<int, int>** arr;
-    int size;
+    int size, maxSize;
     [[nodiscard]] size_t hash(int key) const{
         if (key == 0)
             return 0;
-        return key%size;
+        return key%maxSize;
     }
 public:
     LRUCache(int capacity) {
-        size = capacity;
-        arr = new pair<int, int>*[capacity];
-        for (int i = 0; i < size; i++)
-            arr[i] = nullptr;
+        maxSize = capacity;
+        size = 0;
+        arr = new pair<int, int>*[maxSize];
+        for (size_t i = 0; i <= maxSize; i++)
+            arr[i] = nullptr; //arr[i] = new pair<int, int>;
     }
 
     int get(int key) {
-        int pos = key%size;
-        return arr[pos]->second;
+        int pos = key%maxSize;
+        if (arr[pos]->first == key) return arr[pos]->second;
+        else return -1;
     }
 
     void put(int key, int value) {
-        size_t add = hash(key);
-        auto  newVal = new pair<int, int>(key, value);
-        arr[add] = newVal;
+        if (size < maxSize){
+            auto  newVal = new pair<int, int>(key, value);
+            arr[size] = newVal;
+            size++;
+        } else {
+            size_t add = hash(key);
+            auto  newVal = new pair<int, int>(key, value);
+            arr[add] = newVal;
+        }
     }
 
     ~LRUCache(){
-        delete arr;
+        for (size_t i = 0; i < maxSize; i++)
+            delete arr[i];
+        delete[] arr;
     }
 };
 
